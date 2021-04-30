@@ -6,7 +6,7 @@ use App\Models\Book;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class BookReservationTest extends TestCase
+class BookManagementTest extends TestCase
 {
     use RefreshDatabase;
     /** @test */
@@ -36,7 +36,7 @@ class BookReservationTest extends TestCase
     }
 
     /** @test */
-    public function a_author_is_required()
+    public function an_author_is_required()
     {
         $response = $this->post('/books', [
             'title' => 'My first book',
