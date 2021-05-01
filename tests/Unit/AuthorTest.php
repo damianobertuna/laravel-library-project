@@ -2,17 +2,20 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Models\Author;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class AuthorTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    use RefreshDatabase;
+    /** @test */
+    public function only_name_is_required_to_create_an_author()
     {
-        $this->assertTrue(true);
+        Author::firstOrCreate([
+           'name' => 'John Doe',
+        ]);
+
+        $this->assertCount(1, Author::all());
     }
 }
